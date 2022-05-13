@@ -1,8 +1,13 @@
 import { ethers } from "hardhat";
 import Web3 from "web3";
 
-const UPO_CONTRACT_ADDRESS = "0x0F3C47a687960eCBad9E969Ea483E5E8b4D22Fb1"
-const ACCOUNT_TEST_ADDRESS = "0x435403426b45d74d5C251D7982504cfC9146E8d7"
+// const UPO_CONTRACT_ADDRESS = "0x0F3C47a687960eCBad9E969Ea483E5E8b4D22Fb1"
+// const ACCOUNT_TEST_ADDRESS = "0x435403426b45d74d5C251D7982504cfC9146E8d7"
+
+const UPO_CONTRACT_ADDRESS = "0xa1db369A70645E22d54541e2A69eF8800FBbaE31"
+const ACCOUNT_TEST_ADDRESS = "0x32d413767554EeCbD501e8a5Ab3066548652dC6D"
+const DEPLOY_TEST_ADDRESS = "0x32d413767554EeCbD501e8a5Ab3066548652dC6D"
+
 async function main() {
   await setMinter();
   await mint();
@@ -41,7 +46,7 @@ async function mint() {
 async function setMinter() {
   const MyContract = await ethers.getContractFactory("Upo");
   const contract = await MyContract.attach(UPO_CONTRACT_ADDRESS);
-  const minter_address = "0x064BB9AbFEa620D77c6c4428454cc036432b59e7" //same with deployer
+  const minter_address = DEPLOY_TEST_ADDRESS //same with deployer
   let status = await contract.setMinter(minter_address, ethers.utils.parseUnits("100000000", 18));
   console.log("set minter status", status)
 }

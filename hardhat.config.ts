@@ -20,11 +20,14 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   }
 });
 
-task("createAccount", "Create new account", async() => {
+task("createAccount", "Create new account", async () => {
   const web3 = new Web3()
   const account = web3.eth.accounts.create()
   console.log("new account:: ", account)
 })
+
+const mnemonic =
+  'wrist deer lumber program crop sugar section jaguar lab repair mutual demise dutch cradle brand margin minor happy cinnamon cube wish edit monitor amazing';
 
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
@@ -63,13 +66,15 @@ const config: HardhatUserConfig = {
   networks: {
     emerald_local: {
       url: "http://localhost:8545",
+      // accounts: { mnemonic: mnemonic }
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : ["0xa59e7de1cbc8ac53921f6ea4bdf014cc0ee080dbf9dec3c2063ab472e194e936"],
     },
     emerald_testnet: {
       url: "https://testnet.emerald.oasis.dev",
-      accounts:
-        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : ["0xa59e7de1cbc8ac53921f6ea4bdf014cc0ee080dbf9dec3c2063ab472e194e936"],
+      accounts: { mnemonic: mnemonic }
+      // accounts:
+      //   process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : ["0xa59e7de1cbc8ac53921f6ea4bdf014cc0ee080dbf9dec3c2063ab472e194e936"],
     },
     emerald_mainnet: {
       url: "https://emerald.oasis.dev",
