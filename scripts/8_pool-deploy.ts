@@ -34,7 +34,7 @@ async function info() {
 async function mint() {
   const MyContract = await ethers.getContractFactory("Pool");
   const contract = await MyContract.attach(POOL_CONTRACT_ADDRESS);
-  const [signer] = await ethers.getSigners()
+  const [signer, other] = await ethers.getSigners()
   const _collateral_amount = ethers.utils.parseUnits("1000", 18);
   const _share_amount = ethers.utils.parseUnits("1", 18);
   const _dollar_out_min = ethers.utils.parseUnits("1", 18);

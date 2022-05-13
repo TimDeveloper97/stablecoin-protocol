@@ -26,6 +26,7 @@ task("createAccount", "Create new account", async () => {
   console.log("new account:: ", account)
 })
 
+const mnemonic1 = 'attract lava dilemma coral motion reform episode desk useless immune admit obscure hole rude tobacco exercise energy worry devote naive ugly envelope illegal adjust';
 const mnemonic =
   'wrist deer lumber program crop sugar section jaguar lab repair mutual demise dutch cradle brand margin minor happy cinnamon cube wish edit monitor amazing';
 
